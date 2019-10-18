@@ -8,7 +8,7 @@ import java.util.List;
 @Component
 public class Game {
     private Player player;
-    private List<Room> room;
+    private List<Room> roomList;
     private Room firstRoom;
     private Command[] commands;
 
@@ -31,12 +31,12 @@ public class Game {
         this.player = player;
     }
 
-    public List<Room> getRoom() {
-        return room;
+    public List<Room> getRoomList() {
+        return roomList;
     }
 
-    public void setRoom(List<Room> room) {
-        this.room = room;
+    public void setRoomList(List<Room> roomList) {
+        this.roomList = roomList;
     }
 
     public Room getFirstRoom() {
