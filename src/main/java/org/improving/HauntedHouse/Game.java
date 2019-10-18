@@ -1,9 +1,6 @@
 package org.improving.HauntedHouse;
 
 import org.improving.HauntedHouse.command.Command;
-import org.improving.HauntedHouse.exception.GameExitException;
-import org.improving.HauntedHouse.exception.LoseGameException;
-import org.improving.HauntedHouse.exception.WinGameException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,11 +14,12 @@ public class Game {
     private Room firstRoom;
     private Command[] allCommands;
     private Scanner scanner = new Scanner(System.in);
+    private int roomCount=0;
 
     public Game(Command[] allCommands, HauntedHouseBuilder hauntedHouseBuilder) {
         this.allCommands = allCommands;
         roomList = hauntedHouseBuilder.buildHauntedHouse();
-        firstRoom = roomList.get(3);
+        firstRoom = roomList.get(0);
         this.player = new Player(firstRoom);
     }
 
@@ -30,26 +28,15 @@ public class Game {
         System.out.println("You have entered the Haunted House. Good Luck. You will need it.");
         boolean loop = true;
         while (loop) {
+            roomCount++;
             System.out.print(">");
             var input = scanner.nextLine();
             var validCommand = this.getValidCommand(input);
-            try {
-                if (null != validCommand) {
-                    validCommand.execute(input, this);
-                } else {
-                    System.out.println("Huh? Try again with a valid command.");
-                }
+            if(null != validCommand) {
+                validCommand.execute(input, this);
             }
-            catch (WinGameException winEx) {
-                    System.out.println("Impressive - you have triumphed! Happy Halloween!");
-                    loop = false;
-                }
-            catch (LoseGameException winEx) {
-                    System.out.println("You lost the game. Nice try...not. In the interest of TALKING STRAIGHT, you really sucked that game. Better luck next time.");
-                    loop = false;
-            }
-            catch (GameExitException exitEx) {
-                System.out.println("Ah, well, it has been fun. At least you CONFRONTED REALITY.");
+            else {
+                System.out.println("Huh? Try again with a valid command.");
             }
         }
     }
@@ -89,5 +76,9 @@ public class Game {
 
         public Command getValidCommand (String input) {
            return Stream.of(allCommands).filter(c -> c.isValid(input,this)).findFirst().orElse(null);
+        }
+
+        public int getRoomCount() {
+            return roomCount;
         }
     }
