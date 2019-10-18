@@ -4,7 +4,7 @@ public class Monster {
     private Long id;
     private String name;
     private int damageTaken;
-    private int hitPoints = 100;
+    private int hitPoints;
 
 
     public Long getId() {
