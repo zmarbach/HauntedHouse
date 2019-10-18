@@ -20,12 +20,12 @@ public class AttackCommand implements Command {
     public void execute(String input, Game game) {
         var monster = game.getPlayer().getRoom().getMonster();
 
-        while(monster.getName().equalsIgnoreCase("Monster1") || monster.getName().equalsIgnoreCase("Monster2") || monster.getName().equalsIgnoreCase("Monster 3")) {
+        while(monster.getName().equalsIgnoreCase("Annabelle's Ghost") || monster.getName().equalsIgnoreCase("The Night King") || monster.getName().equalsIgnoreCase("The Nun")) {
             System.out.println("Attack what?");
             return;
         }
 
-        if (monster.getName().equalsIgnoreCase("Monster4")) {
+        if (monster.getName().equalsIgnoreCase("La Llorona")) {
             int x = random.nextInt(100) +1;
             int y = random.nextInt(100) +1;
             var playerStats = game.getPlayer();

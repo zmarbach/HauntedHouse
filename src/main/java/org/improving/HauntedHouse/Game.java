@@ -19,7 +19,7 @@ public class Game {
     public Game(Command[] allCommands, HauntedHouseBuilder hauntedHouseBuilder) {
         this.allCommands = allCommands;
         roomList = hauntedHouseBuilder.buildHauntedHouse();
-        firstRoom = roomList.get(0);
+        firstRoom = roomList.get(3);
         this.player = new Player(firstRoom);
     }
 
