@@ -3,6 +3,7 @@ package org.improving.HauntedHouse;
 public class Player {
     private String name;
     private int hitPoints;
+    private int damageTaken;
     private Room room;
 
     public Player(Room room) {
@@ -23,6 +24,14 @@ public class Player {
 
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
+    }
+
+    public int getDamageTaken() {
+        return damageTaken;
+    }
+
+    public void setDamageTaken(int damageTaken) {
+        this.damageTaken = damageTaken;
     }
 
     public Room getRoom() {

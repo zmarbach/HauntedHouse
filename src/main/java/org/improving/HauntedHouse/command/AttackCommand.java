@@ -1,6 +1,8 @@
 package org.improving.HauntedHouse.command;
 
 import org.improving.HauntedHouse.Game;
+import org.improving.HauntedHouse.exception.LoseGameException;
+import org.improving.HauntedHouse.exception.WinGameException;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
@@ -28,10 +30,43 @@ public class AttackCommand implements Command {
         if (monsterId.equals(4)) {
             int x = random.nextInt(100) +1;
             int y = random.nextInt(100) +1;
-            var stats = game.getPlayer();
+            var playerStats = game.getPlayer();
 
+            //monster attacking you
             if (x <= 50) {
-                System.out.println("Huzzah! You have ");
+                System.out.println("Huzzah! You have attacked " + monster.getName());
+                monster.setDamageTaken(monster.getHitPoints() + 10);
+                monster.setHitPoints(monster.getHitPoints() - monster.getDamageTaken());
+                System.out.println("[Remaining HitPoints for " + monster.getName() + ": " + monster.getHitPoints() + "]");
+                System.out.println("\n");
+            } else {
+                System.out.println("You tried to attack! But you missed... try again!");
+                System.out.println("\n");
+            }
+
+            //you attacking the monster
+            if (y <= 50) {
+                System.out.println("Oh no! " + monster.getName() + " just attacked you!");
+                playerStats.setDamageTaken(playerStats.getDamageTaken() + 10);
+                playerStats.setHitPoints(playerStats.getHitPoints() - playerStats.getDamageTaken());
+                System.out.println("[Your remaining HitPoints: " + playerStats.getHitPoints() + "]");
+                System.out.println("\n");
+            } else {
+                System.out.println(monster.getName() + " tried to attack you! But he missed!");
+                System.out.println("\n");
+            }
+
+            var playerHP = playerStats.getHitPoints();
+            var monsterHP = monster.getHitPoints();
+
+            if (monsterHP <= 0) {
+                System.out.println("Congrats! You have just killed " + monster.getName());
+                System.out.println("You may live... for now..");
+                game.getPlayer().getRoom().setMonster(null);
+                throw new WinGameException();
+            } else if (playerHP <= 0) {
+                System.out.println("Dang... " + monster.getName() + " just killed you.. it was nice watching you.. ");
+                throw new LoseGameException();
             }
         }
 

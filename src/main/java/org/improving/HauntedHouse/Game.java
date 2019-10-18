@@ -20,6 +20,38 @@ public class Game {
         this.player = new Player(firstRoom);
     }
 
+    public Player getPlayer () {
+        return player;
+    }
+
+    public void setPlayer (Player player){
+        this.player = player;
+    }
+
+    public List<Room> getRoomList () {
+        return roomList;
+    }
+
+    public void setRoomList (List < Room > roomList) {
+        this.roomList = roomList;
+    }
+
+    public Room getFirstRoom () {
+        return firstRoom;
+    }
+
+    public void setFirstRoom (Room firstRoom){
+        this.firstRoom = firstRoom;
+    }
+
+    public Command[] getAllCommands () {
+        return allCommands;
+    }
+
+    public void setAllCommands (Command[]allCommands){
+        this.allCommands = allCommands;
+    }
+
 
     public void run() {
 
@@ -36,35 +68,4 @@ public class Game {
     }
 
 
-        public Player getPlayer () {
-            return player;
-        }
-
-        public void setPlayer (Player player){
-            this.player = player;
-        }
-
-        public List<Room> getRoomList () {
-            return roomList;
-        }
-
-        public void setRoomList (List < Room > roomList) {
-            this.roomList = roomList;
-        }
-
-        public Room getFirstRoom () {
-            return firstRoom;
-        }
-
-        public void setFirstRoom (Room firstRoom){
-            this.firstRoom = firstRoom;
-        }
-
-        public Command[] getAllCommands () {
-            return allCommands;
-        }
-
-        public void setAllCommands (Command[]allCommands){
-            this.allCommands = allCommands;
-        }
     }
