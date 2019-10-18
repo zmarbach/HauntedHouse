@@ -21,12 +21,12 @@ public class AttackCommand implements Command {
     public void execute(String input, Game game) {
         var monster = game.getPlayer().getRoom().getMonster();
 
-        while(monster.getName().equalsIgnoreCase("Monster1") || monster.getName().equalsIgnoreCase("Monster2") || monster.getName().equalsIgnoreCase("Monster 3")) {
+        while(monster.getName().equalsIgnoreCase("Annabelle's Ghost") || monster.getName().equalsIgnoreCase("The Night King") || monster.getName().equalsIgnoreCase("The Nun")) {
             System.out.println("Attack what?");
             return;
         }
 
-        if (monster.getName().equalsIgnoreCase("Monster4")) {
+        if (monster.getName().equalsIgnoreCase("La Llorona")) {
             int x = random.nextInt(100) +1;
             int y = random.nextInt(100) +1;
             var playerStats = game.getPlayer();
@@ -36,10 +36,10 @@ public class AttackCommand implements Command {
                 System.out.println("Huzzah! You have attacked " + monster.getName());
                 monster.setHitPoints(monster.getHitPoints() - monster.getDamageTaken());
                 System.out.println("[Remaining HitPoints for " + monster.getName() + ": " + monster.getHitPoints() + "]");
-                System.out.println("\n");
+                System.out.println("");
             } else {
                 System.out.println("You tried to attack! But you missed... try again!");
-                System.out.println("\n");
+                System.out.println("");
             }
 
             //you attacking the monster
@@ -48,7 +48,7 @@ public class AttackCommand implements Command {
                 playerStats.setHitPoints(playerStats.getHitPoints() - playerStats.getDamageTaken());
                 System.out.println("[Your remaining HitPoints: " + playerStats.getHitPoints() + "]");
             } else {
-                System.out.println(monster.getName() + " tried to attack you! But he missed!");
+                System.out.println(monster.getName() + " tried to attack you! But she missed!");
             }
 
             //what will happen when HP reaches 0
