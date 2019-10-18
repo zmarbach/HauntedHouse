@@ -43,7 +43,7 @@ public class AttackCommand implements Command {
             }
 
             //you attacking the monster
-            if (y <= 50) {
+            if (y <= 75) {
                 System.out.println("Oh no! " + monster.getName() + " just attacked you!");
                 playerStats.setHitPoints(playerStats.getHitPoints() - playerStats.getDamageTaken());
                 System.out.println("[Your remaining HitPoints: " + playerStats.getHitPoints() + "]");

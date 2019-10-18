@@ -30,7 +30,7 @@ public class MoveCommand implements Command {
         grimReaper.kill();
         var roomName = game.getPlayer().getRoom().getName();
         if (game.getPlayer().getRoom().getMonster() != null) {
-            if (roomName.equals("Room1") || roomName.equals("Room2") || roomName.equals("Room3")) {
+            if (roomName.equals("The Foyer") || roomName.equals("Living Room") || roomName.equals("Kitchen")) {
                 int count = 0;
                 int totalCountchances = 3;
                 boolean playSuccessStatus = false;
@@ -68,7 +68,7 @@ public class MoveCommand implements Command {
 
                 game.getPlayer().setRoom(game.getRoomList().get(game.getRoomCount()));
             }
-            if (roomName.equals("Room4")) {
+            if (roomName.equals("Basement")) {
                 var monsterName = game.getPlayer().getRoom().getMonster().getName();
                 System.out.println(monsterName + "appears!");
                 System.out.println("The time has come. You must fight your way out!");
