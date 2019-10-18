@@ -1,9 +1,22 @@
 package org.improving.HauntedHouse;
 
+import javax.persistence.*;
+
+@Entity(name = "exits")
 public class Exit {
+
+    @Id
     private Long id;
+
+    @JoinColumn(name = "Name")
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "OriginId")
     private Room origin;
+
+    @ManyToOne
+    @JoinColumn(name = "DestinationId")
     private Room destination;
 
     public Long getId() {

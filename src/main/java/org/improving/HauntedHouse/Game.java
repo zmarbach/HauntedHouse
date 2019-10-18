@@ -12,6 +12,12 @@ public class Game {
     private Room firstRoom;
     private Command[] commands;
 
+    public Game(Command[] commands, HauntedHouseBuilder hauntedHouseBuilder) {
+        this.commands = commands;
+        firstRoom = hauntedHouseBuilder.buildHauntedHouse();
+        this.player = new Player(firstRoom);
+    }
+
 
     public void run() {
         System.out.println("Game is running");

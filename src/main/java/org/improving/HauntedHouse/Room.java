@@ -1,20 +1,30 @@
 package org.improving.HauntedHouse;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity(name = "room")
 public class Room {
 
-    private int id;
+    @Id
+    private Long id;
+
+    @JoinColumn(name = "Name")
     private String name;
+
+    @OneToMany(mappedBy = "origin", fetch = FetchType.EAGER)
     private List<Exit> exits = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "MonsterId")
     private Monster monster;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

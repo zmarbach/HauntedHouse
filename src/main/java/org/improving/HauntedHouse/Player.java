@@ -5,6 +5,10 @@ public class Player {
     private int hitPoints;
     private Room room;
 
+    public Player(Room room) {
+        this.room = room;
+    }
+
     public String getName() {
         return name;
     }
