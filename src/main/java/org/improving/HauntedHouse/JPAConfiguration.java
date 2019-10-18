@@ -42,8 +42,8 @@ public class JPAConfiguration {
             dmDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
             dmDataSource.setUrl("jdbc:mysql://localhost:3306/hauntedhouse?serverTimezone=UTC");
             //dont forget to change this to youe login info
-            dmDataSource.setUsername( "ShavonneLocal" );
-            dmDataSource.setPassword( "BlackHippieMagic2019!" );
+            dmDataSource.setUsername( "zachlocal" );
+            dmDataSource.setPassword( "Buggywhip22" );
 
             dataSource = dmDataSource;
         }
