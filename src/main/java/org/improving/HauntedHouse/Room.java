@@ -10,11 +10,11 @@ public class Room {
     @Id
     private Long id;
 
-    @JoinColumn(name = "Name")
+    @Column(name = "Name")
     private String name;
 
-    @OneToMany(mappedBy = "origin", fetch = FetchType.EAGER)
-    private List<Exit> exits = new ArrayList<>();
+    @OneToOne(mappedBy = "origin")
+    private Exit exit;
 
     @ManyToOne
     @JoinColumn(name = "MonsterId")
@@ -36,12 +36,12 @@ public class Room {
         this.name = name;
     }
 
-    public List<Exit> getExits() {
-        return exits;
+    public Exit getExit() {
+        return exit;
     }
 
-    public void setExits(List<Exit> exits) {
-        this.exits = exits;
+    public void setExit(Exit exit) {
+        this.exit = exit;
     }
 
     public Monster getMonster() {

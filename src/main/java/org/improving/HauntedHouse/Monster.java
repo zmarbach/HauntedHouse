@@ -2,9 +2,9 @@ package org.improving.HauntedHouse;
 
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 
 @Entity(name = "monster")
 public class Monster {
@@ -12,13 +12,13 @@ public class Monster {
     @Id
     private Long id;
 
-    @JoinColumn(name = "Name")
+    @Column(name = "Name")
     private String name;
 
-    @JoinColumn(name = "HitPoints")
+    @Column(name = "HitPoints")
     private Integer hitPoints;
 
-    @JoinColumn(name = "DamageTaken")
+    @Column(name = "DamageTaken")
     private Integer damageTaken;
 
 

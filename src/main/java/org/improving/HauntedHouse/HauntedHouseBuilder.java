@@ -24,9 +24,16 @@ public class HauntedHouseBuilder {
     //method
     public Room buildHauntedHouse() {
         try {
-            List<Room> rooms = roomRepository.findByName("Room1");
+            List<Room> rooms = roomRepository.findAll();
             roomList = rooms;
-            return roomList.get(0);
+//            for(Room room : rooms) {
+//                System.out.println(room.getName());
+//                System.out.println(room.getMonster().getName());
+//                if (room.getExit()!= null) {
+//                    System.out.println(room.getExit().getName());
+//                }
+//            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
