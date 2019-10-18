@@ -14,6 +14,7 @@ public class Game {
     private Room firstRoom;
     private Command[] allCommands;
     private Scanner scanner = new Scanner(System.in);
+    private int roomCount=0;
 
     public Game(Command[] allCommands, HauntedHouseBuilder hauntedHouseBuilder) {
         this.allCommands = allCommands;
@@ -27,15 +28,18 @@ public class Game {
         System.out.println("You have entered the Haunted House. Good Luck. You will need it.");
         boolean loop = true;
         while (loop) {
+            roomCount++;
             System.out.print(">");
             var input = scanner.nextLine();
             var validCommand = this.getValidCommand(input);
+            System.out.println("validCommand "+validCommand);
             if(null != validCommand) {
                 validCommand.execute(input, this);
             }
             else {
                 System.out.println("Huh? Try again with a valid command.");
             }
+
         }
     }
 
@@ -74,5 +78,9 @@ public class Game {
 
         public Command getValidCommand (String input) {
            return Stream.of(allCommands).filter(c -> c.isValid(input,this)).findFirst().orElse(null);
+        }
+
+        public int getRoomCount() {
+            return roomCount;
         }
     }

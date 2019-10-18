@@ -1,7 +1,9 @@
 package org.improving.HauntedHouse;
 
-import java.util.*;
+import org.springframework.stereotype.Component;
 
+import java.util.*;
+@Component
 public class Question {
 
     Map<String,String> rQ = new TreeMap<String,String>();
@@ -28,8 +30,8 @@ public class Question {
     }
 
     public boolean validateAnswer(String question, String answer) {
-        String answerStored = rQ.get("question");
-        if(answer.equalsIgnoreCase(answerStored)) {
+        String answerStored = rQ.get(question);
+        if(answer.trim().equalsIgnoreCase(answerStored)) {
             return true;
         }
         return false;
