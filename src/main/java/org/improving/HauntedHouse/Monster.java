@@ -1,6 +1,5 @@
 package org.improving.HauntedHouse;
 
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
