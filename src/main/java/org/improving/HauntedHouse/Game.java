@@ -1,6 +1,7 @@
 package org.improving.HauntedHouse;
 
 import org.improving.HauntedHouse.command.Command;
+import org.improving.HauntedHouse.exception.GameExitException;
 import org.improving.HauntedHouse.exception.LoseGameException;
 import org.improving.HauntedHouse.exception.WinGameException;
 import org.springframework.stereotype.Component;
@@ -46,6 +47,9 @@ public class Game {
             catch (LoseGameException winEx) {
                     System.out.println("You lost the game. Nice try...not. In the interest of TALKING STRAIGHT, you really sucked that game. Better luck next time.");
                     loop = false;
+            }
+            catch (GameExitException exitEx) {
+                System.out.println("Ah, well, it has been fun. At least you CONFRONTED REALITY.");
             }
         }
     }

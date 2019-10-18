@@ -14,7 +14,6 @@ public class ExitCommand implements Command {
 
     @Override
     public void execute(String input, Game game) throws GameExitException {
-        System.out.println("Ah, well, it has been fun.");
         throw new GameExitException();
 
     }
