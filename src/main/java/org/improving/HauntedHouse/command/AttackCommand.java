@@ -35,10 +35,10 @@ public class AttackCommand implements Command {
                 System.out.println("Huzzah! You have attacked " + monster.getName());
                 monster.setHitPoints(monster.getHitPoints() - monster.getDamageTaken());
                 System.out.println("[Remaining HitPoints for " + monster.getName() + ": " + monster.getHitPoints() + "]");
-                System.out.println("\n");
+                System.out.println("");
             } else {
                 System.out.println("You tried to attack! But you missed... try again!");
-                System.out.println("\n");
+                System.out.println("");
             }
 
             //you attacking the monster
@@ -47,7 +47,7 @@ public class AttackCommand implements Command {
                 playerStats.setHitPoints(playerStats.getHitPoints() - playerStats.getDamageTaken());
                 System.out.println("[Your remaining HitPoints: " + playerStats.getHitPoints() + "]");
             } else {
-                System.out.println(monster.getName() + " tried to attack you! But he missed!");
+                System.out.println(monster.getName() + " tried to attack you! But she missed!");
             }
 
             //what will happen when HP reaches 0

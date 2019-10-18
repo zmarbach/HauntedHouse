@@ -33,16 +33,16 @@ public class Main {
             else if (input.equalsIgnoreCase("wait")) {
                 count++;
                 if (count == 1) {
-                    System.out.println("I don't blame you. I wouldn't want to play either.");
+                    System.out.println("I don't blame you.. I wouldn't want to play either.");
                 }
                 else if (count == 2) {
-                    System.out.println("C'mon scaredy-cat, get in there.");
+                    System.out.println("C'mon scaredy-cat, get in there!");
                 }
                 else if (count == 3) {
-                    System.out.println("Alright, this is getting ridiculous. Now you are just embarrassing your self.");
+                    System.out.println("Seriously.. this is getting ridiculous.. Now you are just embarrassing yourself.");
                 }
                 else if (count == 4) {
-                    System.out.println("Alright we are pushing you in.");
+                    System.out.println("Alright - we are pushing you in.");
                     g.run();
                 }
             } else {
