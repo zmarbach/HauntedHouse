@@ -10,7 +10,7 @@ public class GrimReaper {
         Random r = new Random();
         var num = r.nextInt(100) + 1;
         if (num <= 50) {
-            System.out.println("Surprise! The Grim Reaper killed you. He is always lurking.");
+            System.out.println("Surprise! The Grim Reaper has slain you. He is always lurking...");
             throw new LoseGameException();
         }
     }
