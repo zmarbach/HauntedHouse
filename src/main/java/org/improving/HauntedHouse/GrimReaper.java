@@ -6,11 +6,13 @@ import java.util.Random;
 
 public class GrimReaper {
 
-    private void kill() {
+    public void kill() {
         Random r = new Random();
         var num = r.nextInt(100) + 1;
-        if (num <= 50) {
-            System.out.println("Surprise! The Grim Reaper has slain you. He is always lurking...");
+        if (num <= 30) {
+            System.out.println("Surprise! The Grim Reaper has slain you.");
+            System.out.println("He is known to betray others.. one would say that he does not SHOW LOYALTY." );
+            System.out.print("\n");
             throw new LoseGameException();
         }
     }

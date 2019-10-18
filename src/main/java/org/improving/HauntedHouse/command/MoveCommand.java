@@ -35,14 +35,14 @@ public class MoveCommand implements Command {
                 int totalCountchances = 3;
                 boolean playSuccessStatus = false;
                 do {
-                    System.out.println(game.getPlayer().getRoom().getName());
                     System.out.println("You cannot proceed to the next room until you have answered the question.");
                     System.out.println("You have " + totalCountchances + " chances to get the right answer.");
-                    System.out.println("If you answer incorrectly all " + totalCountchances + " times, you will be defeated");
+                    System.out.println("If you answer incorrectly all " + totalCountchances + " times, you lose.");
 
                     Question question = new Question();
                     String newQuestion = question.getQuestion();
-                    System.out.println("\n " + newQuestion);
+                    System.out.println("\n " + game.getPlayer().getRoom().getMonster().getName() + ": '" + newQuestion + "'");
+                    System.out.print(">");
 
                     Scanner scanner = new Scanner(System.in);
 
@@ -50,19 +50,24 @@ public class MoveCommand implements Command {
 
                     boolean answerResult = question.validateAnswer(newQuestion, inputAnswer);
                     if (answerResult) {
-                        System.out.println("You answered correctly .. Please proceed to next room ");
+                        System.out.println("WAY TO GO! You have answered correctly and you have moved to the next room.");
+                        System.out.println("Type 'look' if you don't believe me..");
                         count = 4;
                         game.getPlayer().getRoom().setMonster(null);
                         playSuccessStatus = true;
                     } else {
-                        System.out.println("You answered Wrong ....");
+                        System.out.println("Womp womp.. wrong answer. You suck..");
+                        System.out.print("\n");
                         totalCountchances--;
                     }
                     count++;
                 } while (count < 3);
 
                 if (!playSuccessStatus) {
-                    System.out.println("You failed in the game ....");
+                    System.out.println("Bummer - you have run out of guesses.");
+                    System.out.println("Don't make excuses, the questions weren't that hard.");
+                    System.out.println("PRACTICE ACCOUNTABILITY");
+                    System.out.print("\n");
                     throw new LoseGameException();
                 }
 
@@ -70,7 +75,7 @@ public class MoveCommand implements Command {
             }
             if (roomName.equals("Basement")) {
                 var monsterName = game.getPlayer().getRoom().getMonster().getName();
-                System.out.println(monsterName + "appears!");
+                System.out.println(monsterName + " appears!");
                 System.out.println("The time has come. You must fight your way out!");
             }
         }

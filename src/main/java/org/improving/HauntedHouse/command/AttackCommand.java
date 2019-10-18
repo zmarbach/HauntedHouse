@@ -14,8 +14,8 @@ public class AttackCommand implements Command {
 
     @Override
     public boolean isValid(String input, Game game) {
-        return input.equalsIgnoreCase("attack");
-    }
+        return (input.equalsIgnoreCase("attack") || input.equalsIgnoreCase("a"));
+        }
 
     @Override
     public void execute(String input, Game game) {
@@ -43,7 +43,7 @@ public class AttackCommand implements Command {
             }
 
             //you attacking the monster
-            if (y <= 75) {
+            if (y <= 80) {
                 System.out.println("Oh no! " + monster.getName() + " just attacked you!");
                 playerStats.setHitPoints(playerStats.getHitPoints() - playerStats.getDamageTaken());
                 System.out.println("[Your remaining HitPoints: " + playerStats.getHitPoints() + "]");
@@ -56,12 +56,12 @@ public class AttackCommand implements Command {
             var monsterHP = monster.getHitPoints();
 
             if (monsterHP <= 0) {
-                System.out.println("Congrats! You have just killed " + monster.getName());
-                System.out.println("You may live... for now..");
+                System.out.println("Oh snap! You have just killed " + monster.getName());
                 game.getPlayer().getRoom().setMonster(null);
                 throw new WinGameException();
             } else if (playerHP <= 0) {
-                System.out.println("Dang... " + monster.getName() + " just killed you.. it was nice watching you.. ");
+                System.out.println("Dang... " + monster.getName() + " just killed you..");
+                System.out.print("\n");
                 throw new LoseGameException();
             }
         }
