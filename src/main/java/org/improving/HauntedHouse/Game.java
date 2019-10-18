@@ -32,14 +32,12 @@ public class Game {
             System.out.print(">");
             var input = scanner.nextLine();
             var validCommand = this.getValidCommand(input);
-            System.out.println("validCommand "+validCommand);
             if(null != validCommand) {
                 validCommand.execute(input, this);
             }
             else {
                 System.out.println("Huh? Try again with a valid command.");
             }
-
         }
     }
 
