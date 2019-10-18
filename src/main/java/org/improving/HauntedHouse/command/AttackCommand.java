@@ -19,9 +19,7 @@ public class AttackCommand implements Command {
     @Override
     public void execute(String input, Game game) {
         var monster = game.getPlayer().getRoom().getMonster();
-//        var monsterId = game.getPlayer().getRoom().getMonster().getId();
 
-        //if having problems with single bar, try double bar
         while(monster.getName().equalsIgnoreCase("Monster1") || monster.getName().equalsIgnoreCase("Monster2") || monster.getName().equalsIgnoreCase("Monster 3")) {
             System.out.println("Attack what?");
             return;
@@ -35,7 +33,6 @@ public class AttackCommand implements Command {
             //monster attacking you
             if (x <= 50) {
                 System.out.println("Huzzah! You have attacked " + monster.getName());
-                monster.setDamageTaken(monster.getHitPoints() + 10);
                 monster.setHitPoints(monster.getHitPoints() - monster.getDamageTaken());
                 System.out.println("[Remaining HitPoints for " + monster.getName() + ": " + monster.getHitPoints() + "]");
                 System.out.println("\n");
@@ -49,10 +46,8 @@ public class AttackCommand implements Command {
                 System.out.println("Oh no! " + monster.getName() + " just attacked you!");
                 playerStats.setHitPoints(playerStats.getHitPoints() - playerStats.getDamageTaken());
                 System.out.println("[Your remaining HitPoints: " + playerStats.getHitPoints() + "]");
-                System.out.println("\n");
             } else {
                 System.out.println(monster.getName() + " tried to attack you! But he missed!");
-                System.out.println("\n");
             }
 
             //what will happen when HP reaches 0
