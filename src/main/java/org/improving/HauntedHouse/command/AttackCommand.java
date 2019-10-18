@@ -22,13 +22,11 @@ public class AttackCommand implements Command {
 //        var monsterId = game.getPlayer().getRoom().getMonster().getId();
 
         //if having problems with single bar, try double bar
-        while(monster.getName().equals("Monster1") || monster.getName().equals("Monster2") || monster.getName().equals("Monster3")) {
         while(monster.getName().equalsIgnoreCase("Monster1") || monster.getName().equalsIgnoreCase("Monster2") || monster.getName().equalsIgnoreCase("Monster 3")) {
             System.out.println("Attack what?");
             return;
         }
 
-        if (monster.getName().equals("Monster4")) {
         if (monster.getName().equalsIgnoreCase("Monster4")) {
             int x = random.nextInt(100) +1;
             int y = random.nextInt(100) +1;
