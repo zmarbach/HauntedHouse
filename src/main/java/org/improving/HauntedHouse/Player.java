@@ -3,7 +3,7 @@ package org.improving.HauntedHouse;
 public class Player {
     private String name;
     private int hitPoints = 100;
-    private int damageTaken;
+    private int damageTaken = 10;
     private Room room;
 
     public Player(Room room) {

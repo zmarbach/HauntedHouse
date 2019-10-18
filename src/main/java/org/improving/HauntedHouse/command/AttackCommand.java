@@ -23,11 +23,13 @@ public class AttackCommand implements Command {
 
         //if having problems with single bar, try double bar
         while(monster.getName().equals("Monster1") || monster.getName().equals("Monster2") || monster.getName().equals("Monster3")) {
+        while(monster.getName().equalsIgnoreCase("Monster1") || monster.getName().equalsIgnoreCase("Monster2") || monster.getName().equalsIgnoreCase("Monster 3")) {
             System.out.println("Attack what?");
             return;
         }
 
         if (monster.getName().equals("Monster4")) {
+        if (monster.getName().equalsIgnoreCase("Monster4")) {
             int x = random.nextInt(100) +1;
             int y = random.nextInt(100) +1;
             var playerStats = game.getPlayer();
@@ -47,7 +49,6 @@ public class AttackCommand implements Command {
             //you attacking the monster
             if (y <= 50) {
                 System.out.println("Oh no! " + monster.getName() + " just attacked you!");
-                playerStats.setDamageTaken(playerStats.getDamageTaken() + 10);
                 playerStats.setHitPoints(playerStats.getHitPoints() - playerStats.getDamageTaken());
                 System.out.println("[Your remaining HitPoints: " + playerStats.getHitPoints() + "]");
                 System.out.println("\n");
@@ -56,6 +57,7 @@ public class AttackCommand implements Command {
                 System.out.println("\n");
             }
 
+            //what will happen when HP reaches 0
             var playerHP = playerStats.getHitPoints();
             var monsterHP = monster.getHitPoints();
 
