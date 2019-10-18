@@ -16,16 +16,11 @@ public class HauntedHouseBuilder {
         this.roomRepository = roomRepository;
     }
 
-    //getter
-    List<Room> getRoomList() {
-        return roomList;
-    }
 
     //method
-    public Room buildHauntedHouse() {
+    public List<Room> buildHauntedHouse() {
         try {
-            List<Room> rooms = roomRepository.findAll();
-            roomList = rooms;
+            return roomList = roomRepository.findAll();
 //            for(Room room : rooms) {
 //                System.out.println(room.getName());
 //                System.out.println(room.getMonster().getName());
@@ -38,5 +33,10 @@ public class HauntedHouseBuilder {
             e.printStackTrace();
         }
         return null;
+    }
+
+    //getter
+    List<Room> getRoomList() {
+        return roomList;
     }
 }

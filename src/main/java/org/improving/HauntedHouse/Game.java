@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 @Component
 public class Game {
@@ -16,56 +17,62 @@ public class Game {
 
     public Game(Command[] allCommands, HauntedHouseBuilder hauntedHouseBuilder) {
         this.allCommands = allCommands;
-        firstRoom = hauntedHouseBuilder.buildHauntedHouse();
+        roomList = hauntedHouseBuilder.buildHauntedHouse();
+        firstRoom = roomList.get(0);
         this.player = new Player(firstRoom);
-    }
-
-    public Player getPlayer () {
-        return player;
-    }
-
-    public void setPlayer (Player player){
-        this.player = player;
-    }
-
-    public List<Room> getRoomList () {
-        return roomList;
-    }
-
-    public void setRoomList (List < Room > roomList) {
-        this.roomList = roomList;
-    }
-
-    public Room getFirstRoom () {
-        return firstRoom;
-    }
-
-    public void setFirstRoom (Room firstRoom){
-        this.firstRoom = firstRoom;
-    }
-
-    public Command[] getAllCommands () {
-        return allCommands;
-    }
-
-    public void setAllCommands (Command[]allCommands){
-        this.allCommands = allCommands;
     }
 
 
     public void run() {
-
+        System.out.println("You have entered the Haunted House. Good Luck. You will need it.");
         boolean loop = true;
         while (loop) {
-            System.out.println("You have entered the Haunted House. Good Luck. You will need it.");
-            System.out.println(">");
+            System.out.print(">");
             var input = scanner.nextLine();
-
-//        for(var command: allCommands)
-//        if(command.isValid(input, this);
-
+            var validCommand = this.getValidCommand(input);
+            if(null != validCommand) {
+                validCommand.execute(input, this);
+            }
+            else {
+                System.out.println("Huh? Try again with a valid command.");
+            }
         }
     }
 
 
+        public Player getPlayer () {
+            return player;
+        }
+
+        public void setPlayer (Player player){
+            this.player = player;
+        }
+
+        public List<Room> getRoomList () {
+            return roomList;
+        }
+
+        public void setRoomList (List < Room > roomList) {
+            this.roomList = roomList;
+        }
+
+        public Room getFirstRoom () {
+            return firstRoom;
+        }
+
+        public void setFirstRoom (Room firstRoom){
+            this.firstRoom = firstRoom;
+        }
+
+        public Command[] getAllCommands () {
+            return allCommands;
+        }
+
+        public void setAllCommands (Command[]allCommands){
+            this.allCommands = allCommands;
+        }
+
+        public Command getValidCommand (String input) {
+           return Stream.of(allCommands).filter(c -> c.isValid(input,this)).findFirst().orElse(null);
+        }
     }

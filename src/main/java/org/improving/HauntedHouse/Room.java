@@ -1,8 +1,8 @@
 package org.improving.HauntedHouse;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity(name = "room")
 public class Room {
