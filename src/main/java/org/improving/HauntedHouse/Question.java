@@ -9,16 +9,16 @@ public class Question {
     public  Question() {
         rQ.put("Is pumpkin a fruit or a vegetable?", "fruit");
         rQ.put("At Halloween parties, what do we traditionally Bob for?", "apples");
-        rQ.put("On which month do we celebrate Halloween?", "Halloween");
+        rQ.put("On which month do we celebrate Halloween?", "October");
         rQ.put("Finish the Quote \"I see -- people\"", "dead");
         rQ.put("Guess which color I am thinking!", "green" );
         rQ.put("I am thinking of a number between 1 and 10, guess?", "8");
-        rQ.put("questionA", "answer");
-        rQ.put("questionB", "answer1");
-        rQ.put("questionC", "answer2");
-        rQ.put("questionD", "answer3");
-        rQ.put("questionE", "answer4");
-        rQ.put("questionF", "answer5");
+        rQ.put("Name the author responsible for creating Frankenstein", "Mary Shelly");
+        rQ.put("Name the FIRST very important rule for when caring for a Gremlin", "Don't get them wet");
+        rQ.put("In The Nightmare Before Christmas, Jack Skellington is the ___ of Halloween Town", "pumpkin king");
+        rQ.put("Which mode of transportation is most preferred by witches?", "flying broom");
+        rQ.put("What is Red Rum backwards?", "murder");
+        rQ.put("In which state did the chainsaw massacre occur?", "Texas");
     }
 
     public String getQuestion() {
@@ -29,13 +29,10 @@ public class Question {
 
     public boolean validateAnswer(String question, String answer) {
         String answerStored = rQ.get("question");
-        if(answer.equals(answerStored)) {
+        if(answer.equalsIgnoreCase(answerStored)) {
             return true;
         }
         return false;
     }
-
-
-
 
 }
