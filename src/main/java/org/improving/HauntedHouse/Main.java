@@ -21,7 +21,6 @@ public class Main {
         System.out.println("\n");
         System.out.println("Type 'start' to open the door and begin the game. OR type 'wait' if you need a minute to gather yourself. (Fair warning - you will be made fun of if you choose to wait.)");
 
-
         int count = 0;
 
         boolean loop = true;
@@ -29,6 +28,7 @@ public class Main {
             var input = scanner.nextLine();
             if (input.equalsIgnoreCase("start")) {
                 g.run();
+                loop = false;
             }
             else if (input.equalsIgnoreCase("wait")) {
                 count++;

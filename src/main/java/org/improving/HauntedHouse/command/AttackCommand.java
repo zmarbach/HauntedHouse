@@ -19,15 +19,15 @@ public class AttackCommand implements Command {
     @Override
     public void execute(String input, Game game) {
         var monster = game.getPlayer().getRoom().getMonster();
-        var monsterId = game.getPlayer().getRoom().getMonster().getId();
+//        var monsterId = game.getPlayer().getRoom().getMonster().getId();
 
         //if having problems with single bar, try double bar
-        while(monsterId.equals(1 | 2 | 3)) {
+        while(monster.getName().equals("Monster1") || monster.getName().equals("Monster2") || monster.getName().equals("Monster3")) {
             System.out.println("Attack what?");
             return;
         }
 
-        if (monsterId.equals(4)) {
+        if (monster.getName().equals("Monster4")) {
             int x = random.nextInt(100) +1;
             int y = random.nextInt(100) +1;
             var playerStats = game.getPlayer();
