@@ -19,7 +19,7 @@ public class Game {
     public Game(Command[] allCommands, HauntedHouseBuilder hauntedHouseBuilder) {
         this.allCommands = allCommands;
         roomList = hauntedHouseBuilder.buildHauntedHouse();
-        firstRoom = roomList.get(3);
+        firstRoom = roomList.get(0);
         this.player = new Player(firstRoom);
     }
 
@@ -28,11 +28,15 @@ public class Game {
         System.out.println("You have entered the Haunted House. Good Luck. You will need it.");
         boolean loop = true;
         while (loop) {
-            roomCount++;
+
             System.out.print(">");
             var input = scanner.nextLine();
-            var validCommand = this.getValidCommand(input);
+            Command validCommand = this.getValidCommand(input);
+
             if(null != validCommand) {
+                if (validCommand.getNameOfCommand().equals("move")) {
+                    roomCount++;
+                }
                 validCommand.execute(input, this);
             }
             else {

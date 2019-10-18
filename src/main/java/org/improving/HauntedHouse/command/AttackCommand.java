@@ -10,6 +10,7 @@ import java.util.Random;
 @Component
 public class AttackCommand implements Command {
     Random random = new Random();
+    private String commandName = "attack";
 
     @Override
     public boolean isValid(String input, Game game) {
@@ -65,5 +66,10 @@ public class AttackCommand implements Command {
             }
         }
 
+    }
+
+    @Override
+    public String getNameOfCommand() {
+        return commandName;
     }
 }
