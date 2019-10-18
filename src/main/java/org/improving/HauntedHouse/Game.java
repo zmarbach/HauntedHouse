@@ -4,55 +4,67 @@ import org.improving.HauntedHouse.command.Command;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Scanner;
 
 @Component
 public class Game {
     private Player player;
     private List<Room> roomList;
     private Room firstRoom;
-    private Command[] commands;
+    private Command[] allCommands;
+    private Scanner scanner = new Scanner(System.in);
 
-    public Game(Command[] commands, HauntedHouseBuilder hauntedHouseBuilder) {
-        this.commands = commands;
+    public Game(Command[] allCommands, HauntedHouseBuilder hauntedHouseBuilder) {
+        this.allCommands = allCommands;
         firstRoom = hauntedHouseBuilder.buildHauntedHouse();
         this.player = new Player(firstRoom);
     }
 
 
     public void run() {
-        System.out.println("Game is running");
 
+        boolean loop = true;
+        while (loop) {
+            System.out.println("You have entered the Haunted House. Good Luck. You will need it.");
+            System.out.println(">");
+            var input = scanner.nextLine();
+
+//        for(var command: allCommands)
+//        if(command.isValid(input, this);
+
+        }
     }
 
-    public Player getPlayer() {
-        return player;
-    }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
+        public Player getPlayer () {
+            return player;
+        }
 
-    public List<Room> getRoomList() {
-        return roomList;
-    }
+        public void setPlayer (Player player){
+            this.player = player;
+        }
 
-    public void setRoomList(List<Room> roomList) {
-        this.roomList = roomList;
-    }
+        public List<Room> getRoomList () {
+            return roomList;
+        }
 
-    public Room getFirstRoom() {
-        return firstRoom;
-    }
+        public void setRoomList (List < Room > roomList) {
+            this.roomList = roomList;
+        }
 
-    public void setFirstRoom(Room firstRoom) {
-        this.firstRoom = firstRoom;
-    }
+        public Room getFirstRoom () {
+            return firstRoom;
+        }
 
-    public Command[] getCommands() {
-        return commands;
-    }
+        public void setFirstRoom (Room firstRoom){
+            this.firstRoom = firstRoom;
+        }
 
-    public void setCommands(Command[] commands) {
-        this.commands = commands;
+        public Command[] getAllCommands () {
+            return allCommands;
+        }
+
+        public void setAllCommands (Command[]allCommands){
+            this.allCommands = allCommands;
+        }
     }
-}
