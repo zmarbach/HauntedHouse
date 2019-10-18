@@ -8,14 +8,14 @@ public class Exit {
     @Id
     private Long id;
 
-    @JoinColumn(name = "Name")
+    @Column(name = "Name")
     private String name;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "OriginId")
     private Room origin;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "DestinationId")
     private Room destination;
 
