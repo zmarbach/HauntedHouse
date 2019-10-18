@@ -19,7 +19,6 @@ public class AttackCommand implements Command {
     @Override
     public void execute(String input, Game game) {
         var monster = game.getPlayer().getRoom().getMonster();
-        var monsterId = game.getPlayer().getRoom().getMonster().getId();
 
         while(monster.getName().equalsIgnoreCase("Monster1") || monster.getName().equalsIgnoreCase("Monster2") || monster.getName().equalsIgnoreCase("Monster 3")) {
             System.out.println("Attack what?");
@@ -36,10 +35,10 @@ public class AttackCommand implements Command {
                 System.out.println("Huzzah! You have attacked " + monster.getName());
                 monster.setHitPoints(monster.getHitPoints() - monster.getDamageTaken());
                 System.out.println("[Remaining HitPoints for " + monster.getName() + ": " + monster.getHitPoints() + "]");
-                System.out.println("");
+                System.out.println("\n");
             } else {
                 System.out.println("You tried to attack! But you missed... try again!");
-                System.out.println("");
+                System.out.println("\n");
             }
 
             //you attacking the monster

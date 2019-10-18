@@ -1,6 +1,8 @@
 package org.improving.HauntedHouse;
 
 import org.improving.HauntedHouse.command.Command;
+import org.improving.HauntedHouse.exception.LoseGameException;
+import org.improving.HauntedHouse.exception.WinGameException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -30,11 +32,20 @@ public class Game {
             System.out.print(">");
             var input = scanner.nextLine();
             var validCommand = this.getValidCommand(input);
-            if(null != validCommand) {
-                validCommand.execute(input, this);
+            try {
+                if (null != validCommand) {
+                    validCommand.execute(input, this);
+                } else {
+                    System.out.println("Huh? Try again with a valid command.");
+                }
             }
-            else {
-                System.out.println("Huh? Try again with a valid command.");
+            catch (WinGameException winEx) {
+                    System.out.println("Impressive - you have triumphed! Happy Halloween!");
+                    loop = false;
+                }
+            catch (LoseGameException winEx) {
+                    System.out.println("You lost the game. Nice try...not. In the interest of TALKING STRAIGHT, you really sucked that game. Better luck next time.");
+                    loop = false;
             }
         }
     }
