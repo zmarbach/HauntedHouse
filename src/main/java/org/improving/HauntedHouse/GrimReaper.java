@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class GrimReaper {
 
-    private void kill() {
+    public void kill() {
         Random r = new Random();
         var num = r.nextInt(100) + 1;
         if (num <= 50) {

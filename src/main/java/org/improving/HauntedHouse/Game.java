@@ -28,10 +28,14 @@ public class Game {
         System.out.println("You have entered the Haunted House. Good Luck. You will need it.");
         boolean loop = true;
         while (loop) {
-            roomCount++;
+
             System.out.print(">");
             var input = scanner.nextLine();
-            var validCommand = this.getValidCommand(input);
+            Command validCommand = this.getValidCommand(input);
+            if (validCommand.getNameOfCommand().equals("move")) {
+                roomCount++;
+            }
+
             if(null != validCommand) {
                 validCommand.execute(input, this);
             }

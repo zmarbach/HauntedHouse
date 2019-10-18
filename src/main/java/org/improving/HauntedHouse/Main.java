@@ -1,5 +1,8 @@
 package org.improving.HauntedHouse;
 
+import org.improving.HauntedHouse.exception.GameExitException;
+import org.improving.HauntedHouse.exception.LoseGameException;
+import org.improving.HauntedHouse.exception.WinGameException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Scanner;
@@ -25,28 +28,32 @@ public class Main {
 
         boolean loop = true;
         while (loop) {
-            var input = scanner.nextLine();
-            if (input.equalsIgnoreCase("start")) {
-                g.run();
-                loop = false;
-            }
-            else if (input.equalsIgnoreCase("wait")) {
-                count++;
-                if (count == 1) {
-                    System.out.println("I don't blame you. I wouldn't want to play either.");
-                }
-                else if (count == 2) {
-                    System.out.println("C'mon scaredy-cat, get in there.");
-                }
-                else if (count == 3) {
-                    System.out.println("Alright, this is getting ridiculous. Now you are just embarrassing your self.");
-                }
-                else if (count == 4) {
-                    System.out.println("Alright we are pushing you in.");
+            try {
+                var input = scanner.nextLine();
+                if (input.equalsIgnoreCase("start")) {
                     g.run();
+                    loop = false;
+                } else if (input.equalsIgnoreCase("wait")) {
+                    count++;
+                    if (count == 1) {
+                        System.out.println("I don't blame you. I wouldn't want to play either.");
+                    } else if (count == 2) {
+                        System.out.println("C'mon scaredy-cat, get in there.");
+                    } else if (count == 3) {
+                        System.out.println("Alright, this is getting ridiculous. Now you are just embarrassing your self.");
+                    } else if (count == 4) {
+                        System.out.println("Alright we are pushing you in.");
+                        g.run();
+                    }
+                } else {
+                    System.out.println("Invalid input. Seriously, just follow directions.");
                 }
-            } else {
-                System.out.println("Invalid input. Seriously, just follow directions.");
+            } catch (WinGameException winEx) {
+                System.out.println("win");
+            } catch (LoseGameException loseEx) {
+                System.out.println("lose");
+            } catch (GameExitException exitEx) {
+                System.out.println("exit");
             }
         }
     }

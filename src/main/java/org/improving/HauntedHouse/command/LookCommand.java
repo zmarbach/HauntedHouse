@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class LookCommand implements Command {
+    private String commandName = "look";
 
     @Override
     public boolean isValid(String input, Game game) {
@@ -16,5 +17,9 @@ public class LookCommand implements Command {
         var currentRoom = game.getPlayer().getRoom().getName();
         System.out.println("You are currently in " + currentRoom);
 
+    }
+    @Override
+    public String getNameOfCommand() {
+        return commandName;
     }
 }
